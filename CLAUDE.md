@@ -23,13 +23,17 @@
 
 ## 手順・チェックリスト
 - `docs/受給資格確認_チェックリスト.md` を参照。
+- ジョブ・カードは 様式1-1（キャリア・プラン）／様式2（職務経歴）／様式3-1（免許・資格）／様式3-2（学習歴・訓練歴）で構成。
+  第2面のキャリアコンサルタント記入欄は空けておく（訓練前キャリアコンサルティングで記入される）。
 
 ## 書類作成の方法（tools/）
 - 参考PDF・様式PDFへの記入: `tools/pdf_overlay.py`（白塗り＋文字挿入、ページ画像化）。
+- ジョブ・カード（Excel様式1-1・2・3-1・3-2）: `tools/xlsx_fill.py` でセル値を書き込み → `--pdf` でPDF化。
+  セル位置は `docs/ジョブカード_セル対応表.md`。参考の記入済み様式を使う場合は旧申請者の値を必ず全部上書き／消去する。
 - Word文書の文字置換: `tools/docx_replace.py` → LibreOfficeでPDF化。
 
 ## 環境準備（クラウド環境で毎回必要な場合）
 ```
 apt-get install -y libreoffice-writer python3-uno fonts-ipafont-mincho fonts-ipaexfont fonts-noto-cjk
-pip install pymupdf python-docx pillow
+pip install pymupdf python-docx openpyxl pillow
 ```
